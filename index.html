@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CoDD: Breaking the Factorization Barrier in Diffusion Language Models">
+  <meta name="keywords" content="Discrete Diffusion, Language Models, Probabilistic Circuits, Coupled Discrete Diffusion">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoDD: Breaking the Factorization Barrier in Diffusion Language Models</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="http://starai.cs.ucla.edu">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="http://starai.cs.ucla.edu">
+            StarAI Lab
+          </a>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Breaking the Factorization Barrier in Diffusion Language Models</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://ianli18.github.io/">Ian Li</a><sup>*1</sup>,</span>
+            <span class="author-block"><a href="https://zoeshao0425.github.io/">Zilei Shao</a><sup>*2</sup>,</span>
+            <span class="author-block"><a href="https://web.cs.ucla.edu/~benjiewang/">Benjie Wang</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://roseyu.com/">Rose Yu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://web.cs.ucla.edu/~guyvdb/">Guy Van den Broeck</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://liuanji.github.io/">Anji Liu</a><sup>3</sup></span>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, San Diego</span><br>
+            <span class="author-block"><sup>2</sup>University of California, Los Angeles</span><br>
+            <span class="author-block"><sup>3</sup>National University of Singapore</span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div class="publication-links">
+            <!-- PDF Link. -->
+            <span class="link-block">
+              <a href="https://github.com/liuanji/CoDD/blob/main/paper/CoDD.pdf" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <!-- Code Link. -->
+            <span class="link-block">
+              <a href="https://github.com/liuanji/CoDD" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- Abstract -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Diffusion language models theoretically allow for efficient parallel generation but are practically hindered by the "factorization barrier": the assumption that simultaneously predicted tokens are independent. This limitation forces a trade-off: models must either sacrifice speed by resolving dependencies sequentially or suffer from incoherence due to factorization. We argue that this barrier arises not from limited backbone expressivity, but from a structural misspecification: models are restricted to fully factorized outputs because explicitly parameterizing a joint distribution would require the Transformer to output a prohibitively large number of parameters.
+          </p>
+          <p>
+            We propose <strong>Co</strong>upled <strong>D</strong>iscrete <strong>D</strong>iffusion (<strong>CoDD</strong>), a hybrid framework that breaks this barrier by replacing the fully-factorized output distribution with a lightweight, tractable probabilistic inference layer. This formulation yields a distribution family that is significantly more expressive than standard factorized priors, enabling the modeling of complex joint dependencies, yet remains compact enough to avoid the prohibitive parameter explosion associated with full joint modeling.
+          </p>
+          <p>
+            Empirically, CoDD seamlessly enhances diverse diffusion language model architectures with negligible overhead, matching the reasoning performance of computationally intensive Reinforcement Learning baselines at a fraction of the training cost. Furthermore, it prevents performance collapse in few-step generation, enabling high-quality outputs at significantly reduced latencies.
+          </p>
+        </div>
+        <div class="publication-image">
+          <img src="./static/images/fig1.gif" alt="CoDD Overview" class="responsive-image" loop autoplay style="max-width: 750px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Empirical Results -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Empirical Highlights</h2>
+
+        <!-- RL Comparison -->
+        <div class="publication-image">
+          <img src="./static/images/fig3.png" alt="CoDD vs RL Baselines" class="responsive-image" style="max-width: 800px;">
+          <p class="caption" style="margin-top: 8px; font-size: 0.9em; color: #555;">CoDD matches or exceeds the reasoning performance of computationally intensive RL baselines at a fraction of the training cost across varying step budgets (MATH500, LLaDA).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table 1: Block Diffusion (LLaDA) -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            CoDD seamlessly enhances diverse diffusion architectures and decoding heuristics. The tables below show accuracy (%) of LLaDA and Dream baselines versus their CoDD-augmented versions across four benchmarks (MATH500, GSM8K, GPQA, MBPP) and three step budgets (256, 128, 64). CoDD consistently improves performance across all settings, with especially large gains under reduced step budgets.
+          </p>
+        </div>
+        <div class="publication-image">
+          <img src="./static/images/tab1.png" alt="Block Diffusion Performance Comparison (LLaDA)" class="responsive-image" style="max-width: 800px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Table 2: Full Diffusion (Dream) -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="publication-image" style="margin-top: 20px;">
+          <img src="./static/images/tab2.png" alt="Full Diffusion Performance Comparison (Dream)" class="responsive-image" style="max-width: 800px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Figure 2: Conditional Log-Likelihood Analysis -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="publication-image">
+          <img src="./static/images/fig2.png" alt="Conditional Log-Likelihood Analysis" class="responsive-image" style="max-width: 500px;">
+          <p class="caption" style="margin-top: 8px; font-size: 0.9em; color: #555;">Conditional log-likelihood of CoDD vs. Dream across different mask ratios. CoDD consistently assigns higher probability to ground truth tokens in the low-noise regime.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Empirical Results -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{li2026breaking,
+    title = "Breaking the Factorization Barrier in Diffusion Language Models",
+    author = "Li, Ian and Shao, Zilei and Wang, Benjie and
+              Yu, Rose and Van den Broeck, Guy and Liu, Anji",
+    year = "2026",
+    url = "https://github.com/liuanji/CoDD"
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a
+            href="https://nerfies.github.io/">Nerfies project page</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            You are free to borrow the source of this website, we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
