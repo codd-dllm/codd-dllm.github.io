@@ -4,12 +4,14 @@ This is the repository that contains source code for the [CoDD project website](
 
 If you find CoDD useful for your work please cite:
 ```
-@article{li2026breaking,
-    title = "Breaking the Factorization Barrier in Diffusion Language Models",
-    author = "Li, Ian and Shao, Zilei and Wang, Benjie and
-              Yu, Rose and Van den Broeck, Guy and Liu, Anji",
-    year = "2026",
-    url = "https://github.com/liuanji/CoDD"
+@misc{li2026breakingfactorizationbarrierdiffusion,
+      title={Breaking the Factorization Barrier in Diffusion Language Models}, 
+      author={Ian Li and Zilei Shao and Benjie Wang and Rose Yu and Guy Van den Broeck and Anji Liu},
+      year={2026},
+      eprint={2603.00045},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2603.00045}, 
 }
 ```
 
